@@ -1,5 +1,9 @@
 import express, { Application, Request, Response } from 'express'
+import cors from 'cors'
 import dotenv from "dotenv"
+import myconn from 'express-myconnection'
+import mysql from 'mysql'
+import dbOptions from '../config/config'
 // Rutas
 import clientRoutes from '../config/routes/Clientes'
 import productRoutes from '../config/routes/Productos'
@@ -18,6 +22,8 @@ class Server {
         this.app = express()
         this.port = process.env.PORT || '3050'
 
+        // Metodos iniciales
+        this.middlewares()
         this.routes()
     }
 
@@ -25,6 +31,13 @@ class Server {
         const { clientes, productos } = this.apiPaths
         this.app.use(clientes, clientRoutes)
         this.app.use(productos, productRoutes)
+    }
+
+    middlewares(){
+        this.app.use(cors())
+        this.app.use(express.json())
+        this.app.use(myconn(mysql, dbOptions, 'request'))
+        this.app.use(express.static('public'))
     }
 
     listen(){

@@ -1,13 +1,13 @@
 import dotenv from "dotenv"
 dotenv.config()
 
-let dbOptions = {
+const dbOptions = {
     username: process.env.SERVER_DB_USER || "root",
     password: process.env.SERVER_DB_PASSWORD || "",
-    database: process.env.SERVER_DB_NAME || "citecn",
-    host: process.env.SERVER_HOST || 'localhost',
-    port: process.env.SERVER_PORT || 3306,
-    dialect: process.env.SERVER_DB_DIALECT || "mysql",
+    database: process.env.SERVER_DB_NAME || "carritoDB",
+    host:     process.env.SERVER_HOST || 'localhost',
+    port:     Number(process.env.SERVER_PORT) || 3306,
+    dialect:  process.env.SERVER_DB_DIALECT || "mysql",
     dialectOptions: {
         bigNumberStrings: true
     },
