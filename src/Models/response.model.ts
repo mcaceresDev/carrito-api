@@ -1,7 +1,7 @@
-export interface resp {
-    message: string,
-    status: number,
-    rows: [{}]
+export class resp {
+    message:string = "";
+    status:number = 200;
+    rows?:Array<any> = []
 };
 
 export class notFoundError{

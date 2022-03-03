@@ -1,9 +1,11 @@
 import express, { Application, Request, Response } from 'express'
 import cors from 'cors'
 import dotenv from "dotenv"
-import myconn from 'express-myconnection'
+import { Sequelize } from 'sequelize'
 import mysql from 'mysql'
+import myconn from 'express-myconnection'
 import dbOptions from '../config/config'
+import db from '../config/db/connection'
 // Rutas
 import clientRoutes from '../config/routes/Clientes'
 import productRoutes from '../config/routes/Productos'
@@ -18,12 +20,14 @@ class Server {
         productos: '/api/productos'
     }
 
+    
     constructor() {
         this.app = express()
         this.port = process.env.PORT || '3050'
 
         // Metodos iniciales
-        this.middlewares()
+        this.dbConnection()
+        this.middlewares() 
         this.routes()
     }
 
@@ -36,8 +40,19 @@ class Server {
     middlewares(){
         this.app.use(cors())
         this.app.use(express.json())
-        this.app.use(myconn(mysql, dbOptions, 'request'))
+        // this.app.use(myconn(mysql, this.Options, 'request'))
         this.app.use(express.static('public'))
+    }
+
+    dbConnection() {
+        db
+        .authenticate()
+        .then(() => {
+          console.log('Connection has been established successfully.');
+        })
+         .catch(err => {
+         console.error('Unable to connect to the database:', err);
+        });
     }
 
     listen(){
