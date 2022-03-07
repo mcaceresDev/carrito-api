@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { Request, Response } from "express";
-import ClientesController from "../../Controllers/Clientes.controler";
+import ClientesController from "../../Controllers/usuario.controler";
 
 const router = Router()
 const clienteControler = new ClientesController

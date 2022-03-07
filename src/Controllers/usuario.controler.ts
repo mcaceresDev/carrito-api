@@ -1,15 +1,15 @@
 import express, { Application, Request, Response, NextFunction } from 'express'
-import Cliente from '../Models/cliente.model'
+import Usuario from '../Models/usuario.model'
 import { resp, serverError, notFoundError, forbiddenError } from '../Models/response.model'
 
-class ClientesController {
+class UsuarioController {
 
     // Obtener todos los registros de la tabla clientes
     getAll = async (req: Request, res: Response) => {
         let rpta = new resp
 
         try {
-            const data = await Cliente.findAll()
+            const data = await Usuario.findAll()
 
             if (data.length > 0) {
                 rpta.message = `Mostrando ${data.length} registros`;
@@ -31,7 +31,7 @@ class ClientesController {
         const {id} = req.params
         let rpta = new forbiddenError
 
-        const cliente = await Cliente.findByPk(id)
+        const cliente = await Usuario.findByPk(id)
 
         res.json({
             rpta
@@ -40,4 +40,4 @@ class ClientesController {
 
 }
 
-export default ClientesController
+export default UsuarioController

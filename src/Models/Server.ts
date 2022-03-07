@@ -7,8 +7,7 @@ import myconn from 'express-myconnection'
 import dbOptions from '../config/config'
 import db from '../config/db/connection'
 // Rutas
-import clientRoutes from '../config/routes/Clientes'
-import productRoutes from '../config/routes/Productos'
+import userRoutes from '../config/routes/usuario.route'
 
 dotenv.config()
 class Server {
@@ -33,8 +32,7 @@ class Server {
 
     routes(){
         const { clientes, productos } = this.apiPaths
-        this.app.use(clientes, clientRoutes)
-        this.app.use(productos, productRoutes)
+        this.app.use(clientes, userRoutes)
     }
 
     middlewares(){
