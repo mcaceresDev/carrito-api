@@ -1,5 +1,11 @@
-export class resp {
-    message:string = "";
+export interface respuesta {
+    message:string;
+    status:number;
+    rows?:Array<any>
+};
+
+export class okResp {
+    message:string = "Ok";
     status:number = 200;
     rows?:Array<any> = []
 };
