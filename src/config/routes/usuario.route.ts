@@ -1,15 +1,15 @@
 import { Router } from "express";
 import { Request, Response } from "express";
-import ClientesController from "../../Controllers/usuario.controler";
+import UsuarioController from "../../Controllers/usuario.controler";
 
 const router = Router()
-const clienteControler = new ClientesController
+const usuarioController = new UsuarioController
 
-router.get('/all', clienteControler.getAll)
-router.get('/byId', clienteControler.getById)
-router.post('/', clienteControler.getById)
-router.get('/put/:id', clienteControler.getById)
-router.get('/delete/:id', clienteControler.getById)
+router.get('/all', usuarioController.getAll)
+router.get('/byId', usuarioController.getById)
+router.post('/', usuarioController.getById)
+router.get('/put/:id', usuarioController.getById)
+router.get('/delete/:id', usuarioController.getById)
 
 
 

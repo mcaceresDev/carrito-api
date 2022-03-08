@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize/types";
 import db from "../config/db/connection";
+import Categoria from "./categoria.model";
 
 const Producto = db.define('Producto', {
     nombre:{
@@ -27,6 +28,12 @@ const Producto = db.define('Producto', {
         type: DataTypes.TINYINT
     }
     
+})
+
+//Producto -> Categoria N:1
+Producto.belongsTo(Categoria, {
+    foreignKey: 'categoria_id',
+    as: 'Categoria'
 })
 
 export default Producto

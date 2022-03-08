@@ -2,7 +2,7 @@ import { DataTypes } from "sequelize";
 import db from "../config/db/connection";
 
 export interface UserIModel {
-    id_usuario: number | null | any,
+    id_usuario: number | null,
     primer_nombre: string,
     segundo_nombre: string,
     primer_apellido: string,
@@ -22,36 +22,18 @@ const Usuario = db.define('Usuario', {
         autoIncrement: true, 
         allowNull: false,
     },
-    primer_nombre: {
-        type: DataTypes.STRING
-    },
-    segundo_nombre: {
-        type: DataTypes.STRING
-    },
-    primer_apellido: {
-        type: DataTypes.STRING
-    },
-    segundo_apellido: {
-        type: DataTypes.STRING
-    },
-    telefono: {
-        type: DataTypes.STRING
-    },
-    email: {
-        type: DataTypes.STRING
-    },
-    password: {
-        type: DataTypes.STRING
-    },
-    estado: {
-        type: DataTypes.TINYINT
-    },
-    rol_id: {
-        type: DataTypes.TINYINT
-    },
-    carrito_id: {
-        type: DataTypes.INTEGER
-    }
+    primer_nombre: DataTypes.STRING,
+    segundo_nombre: DataTypes.STRING,
+    primer_apellido: DataTypes.STRING,
+    segundo_apellido: DataTypes.STRING,
+    telefono: DataTypes.STRING,
+    email: DataTypes.STRING,
+    password: DataTypes.STRING,
+    estado: DataTypes.TINYINT,
+    rol_id: DataTypes.TINYINT,
+    carrito_id: DataTypes.INTEGER
 })
+
+
 
 export default Usuario
