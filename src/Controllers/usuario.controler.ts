@@ -1,17 +1,9 @@
 import express, { Application, Request, Response, NextFunction } from 'express'
-<<<<<<< HEAD
 import Usuario from '../Models/usuario.model'
 import { respuesta, serverError, notFoundError, forbiddenError, okResp } from '../Models/response.model'
 import Carrito from '../Models/carrito.model'
 
 class UsuarioController {
-=======
-import Usuario, { UserIModel } from '../Models/usuario.model'
-import { respuesta, serverError, notFoundError, forbiddenError, okResp } from '../Models/response.model'
-
-class UsuarioController {
-
->>>>>>> 6d33f12d65aa7e0a1a8ee70627b6f5827becddf6
     rpta: respuesta = {
         message: "Sin respuesta",
         status: 0
@@ -36,26 +28,15 @@ class UsuarioController {
             }
             return res.send(this.rpta);
             // return res.json(rpta);
-<<<<<<< HEAD
             
         } catch (error) {
-=======
-
-        } catch (error: any) {
-            this.rpta = new serverError()
->>>>>>> 6d33f12d65aa7e0a1a8ee70627b6f5827becddf6
             console.log(error);
             throw error
         }
     }
 
-<<<<<<< HEAD
     //Obtener usuario por su Id
     getById = async(req: Request, res: Response) => {
-=======
-    //Obtener cliente por su Id
-    getById = async (req: Request, res: Response) => {
->>>>>>> 6d33f12d65aa7e0a1a8ee70627b6f5827becddf6
         const { id } = req.params
 
         try {
@@ -231,10 +212,6 @@ class UsuarioController {
     }
 
     // ---------------------------------------------------------
-<<<<<<< HEAD
-
-=======
->>>>>>> 6d33f12d65aa7e0a1a8ee70627b6f5827becddf6
 }
 
 export default UsuarioController
