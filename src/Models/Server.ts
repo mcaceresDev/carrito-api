@@ -7,7 +7,7 @@ import myconn from 'express-myconnection'
 import dbOptions from '../config/config'
 import db from '../config/db/connection'
 // Rutas
-import clientRoutes from '../config/routes/Clientes'
+import userRoutes from '../config/routes/usuario.route'
 import productRoutes from '../config/routes/Productos'
 
 dotenv.config()
@@ -16,7 +16,8 @@ class Server {
     private app: Application
     private port: string
     private apiPaths = {
-        clientes: '/api/clientes',
+        usuarios: '/api/usuarios',
+        categorias: '/api/categorias',
         productos: '/api/productos'
     }
 
@@ -32,8 +33,8 @@ class Server {
     }
 
     routes(){
-        const { clientes, productos } = this.apiPaths
-        this.app.use(clientes, clientRoutes)
+        const { usuarios, productos, categorias } = this.apiPaths
+        this.app.use(usuarios, userRoutes)
         this.app.use(productos, productRoutes)
     }
 
@@ -51,7 +52,7 @@ class Server {
           console.log('Connection has been established successfully.');
         })
          .catch(err => {
-         console.error('Unable to connect to the database:', err);
+         console.error('Unable to connect to the database:', err); 
         });
     }
 

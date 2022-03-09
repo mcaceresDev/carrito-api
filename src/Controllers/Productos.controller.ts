@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { resp, notFoundError, forbiddenError } from '../Models/response.model'
+import { respuesta, notFoundError, forbiddenError } from '../Models/response.model'
 
 class ProductosController {
     
