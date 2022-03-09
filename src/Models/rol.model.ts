@@ -8,4 +8,4 @@ const Rol = db.define('Rol', {
     }
 })
 
-export default Rol
+export default Rol 
