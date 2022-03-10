@@ -45,7 +45,7 @@ class ProductoController {
             })
             if (data.length > 0) {
                 this.rpta = new okResp
-                this.rpta.message = `Mostrando ${data.length} registros`;
+                this.rpta.message = `Mostrando ${data.length} registro`;
                 this.rpta.rows = data;
             }
             else {

@@ -1,6 +1,8 @@
 import { Request, Response } from 'express'
-import Categoria from '../Models/categoria.model'
 import { respuesta, serverError, notFoundError, forbiddenError, okResp } from '../Models/response.model'
+// modelos
+import Categoria from '../Models/categoria.model'
+import Producto from '../Models/producto.model'
 
 class CategoriaController {
 
@@ -13,7 +15,12 @@ class CategoriaController {
     getAll = async (req: Request, res: Response) => {
 
         try {
-            const data = await Categoria.findAll()
+            const data = await Categoria.findAll({
+                include: {
+                    model: Producto,
+                    as: "Producto",
+                }
+            })
 
             if (data.length > 0) {
                 this.rpta = new okResp

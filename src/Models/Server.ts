@@ -9,6 +9,7 @@ import db from '../config/db/connection'
 // Rutas
 import userRoutes from '../config/routes/usuario.route'
 import productRoutes from '../config/routes/producto.route'
+import categoryRoutes from '../config/routes/categoria.route'
 
 dotenv.config()
 class Server {
@@ -36,6 +37,7 @@ class Server {
         const { usuarios, productos, categorias } = this.apiPaths
         this.app.use(usuarios, userRoutes)
         this.app.use(productos, productRoutes)
+        this.app.use(categorias, categoryRoutes)
     }
 
     middlewares(){
