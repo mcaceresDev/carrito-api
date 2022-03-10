@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
 import db from "../config/db/connection";
 import Usuario from "./usuario.model";
+import Carrito_Producto from "./carrito-producto.model";
 
 const Carrito = db.define('carrito', {
     id_carrito: {
@@ -19,6 +20,11 @@ const Carrito = db.define('carrito', {
     timestamps: false,
 })
 
+
+// Carrito.hasMany(Carrito_Producto, {
+//     as: 'Carrito_Carrito',
+//     foreignKey: 'carrito_id',
+// });
 
 
 export default Carrito

@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import db from "../config/db/connection";
+import Carrito_Producto from "./carrito-producto.model";
 import Categoria from "./categoria.model";
 
 const Producto = db.define('producto', {
@@ -40,10 +41,9 @@ const Producto = db.define('producto', {
     timestamps: false,
 })
 
-//Producto -> Categoria N:1
-// Producto.belongsTo(Categoria, {
-//     foreignKey: 'categoria_id',
-//     as: 'Categoria'
-// })
+// Producto.hasMany(Carrito_Producto,{
+//     as: 'Carrito_Producto',
+//     foreignKey: 'producto_id',
+//   });
 
 export default Producto
