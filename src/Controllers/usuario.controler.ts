@@ -1,4 +1,4 @@
-import express, { Application, Request, Response, NextFunction } from 'express'
+import express, { Request, Response } from 'express'
 import Usuario from '../Models/usuario.model'
 import { respuesta, serverError, notFoundError, forbiddenError, okResp } from '../Models/response.model'
 import Carrito from '../Models/carrito.model'

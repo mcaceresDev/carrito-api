@@ -1,4 +1,4 @@
-import { DataTypes } from "sequelize/types";
+import { DataTypes } from "sequelize";
 import db from "../config/db/connection";
 
 const Factura = db.define('Factura', {

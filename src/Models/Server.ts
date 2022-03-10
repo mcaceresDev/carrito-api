@@ -8,11 +8,11 @@ import dbOptions from '../config/config'
 import db from '../config/db/connection'
 // Rutas
 import userRoutes from '../config/routes/usuario.route'
-import productRoutes from '../config/routes/Productos'
+import productRoutes from '../config/routes/producto.route'
 
 dotenv.config()
 class Server {
-
+ 
     private app: Application
     private port: string
     private apiPaths = {
