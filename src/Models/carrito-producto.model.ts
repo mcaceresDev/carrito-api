@@ -34,7 +34,7 @@ Carrito_Producto.belongsTo(Producto, {
 })
 
 Carrito.hasMany(Carrito_Producto, {
-    as: 'Producto',
+    as: 'Carrito_Producto',
     foreignKey: 'carrito_id',
 });
 

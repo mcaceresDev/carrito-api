@@ -5,6 +5,17 @@ import Categoria from '../Models/categoria.model'
 import Producto from '../Models/producto.model'
 import Carrito from '../Models/carrito.model'
 import Carrito_Producto from '../Models/carrito-producto.model'
+import Usuario from '../Models/usuario.model'
+
+export interface carrito_producto {
+    carrito_id: number,
+    producto_id: number,
+    cantidad: number,
+    precio: number,
+    iva: number,
+    total: number,
+    fecha_agregado: Date
+}
 
 class CarritoController {
 
@@ -13,20 +24,27 @@ class CarritoController {
         status: 0
     }
 
-    // Obtener todos los registros de la tabla categorias
+    // Obtener todos los registros de un carrito segun el usuario
     getAll = async (req: Request, res: Response) => {
+        const { id } = req.params
 
         try {
             const data = await Carrito.findAll({
                 include: [{
                     model: Carrito_Producto,
-                    as: "Producto",
+                    as: "Carrito_Producto",
                     include: [{
                         model: Producto,
                         as: "Producto",
+                        include: [{
+                            model: Usuario,
+                            as: "UsuarioProducto"
+                        }]
                     }]
-                },
-                ]
+                }],
+                where: {
+                    id_carrito: id
+                }
             })
 
             if (data.length > 0) {
@@ -46,56 +64,65 @@ class CarritoController {
         }
     }
 
-    //Obtener categoria por su Id
-    // getById = async (req: Request, res: Response) => {
-    //     const { id } = req.params
 
-    //     try {
-    //         const data = await Categoria.findAll({
-    //             where: {
-    //                 id_usuario: id,
-    //                 estado: 1
-    //             }
-    //         })
-    //         if (data.length > 0) {
-    //             this.rpta = new okResp
-    //             this.rpta.message = `Mostrando ${data.length} registros`;
-    //             this.rpta.rows = data;
-    //         }
-    //         else {
-    //             this.rpta = new notFoundError
-    //         }
-    //         return res.send(this.rpta);
+    //crear carrito
+    add = async (req: Request, res: Response) => {
+        try {
+            const newCart = {
+                fech_creacion: new Date()
+            }
+            const data = await Carrito.create(newCart);
 
-    //     } catch (error: any) {
-    //         this.rpta = new serverError()
-    //         console.log(error);
-    //         throw error
-    //     }
-    // }
+            if (data) {
+                this.rpta = new okResp
+                this.rpta.message = `Registro creado con éxito`;
+            }
 
-    // //crear categorias
-    // add = async (req: Request, res: Response) => {
-    //     try {
-    //         const { nombre, descripcion } = req.body
-    //         const newCategory = {
-    //             nombre,
-    //             descripcion
-    //         }
-    //         const data = await Categoria.create(newCategory);
+            return res.send(this.rpta)
 
-    //         if (data) {
-    //             this.rpta = new okResp
-    //             this.rpta.message = `Registro creado con éxito`;
-    //         }
+        } catch (error: any) {
+            console.log(error);
+            throw error;
+        }
+    }
 
-    //         return res.send(this.rpta)
+    //llenar carrito
+    fillCart = async (req: Request, res: Response) => {
+        const {
+            carrito_id,
+            producto_id,
+            cantidad,
+            precio,
+            iva,
+            total,
+            fecha_agregado
+        } = req.body
 
-    //     } catch (error: any) {
-    //         console.log(error);
-    //         throw error;
-    //     }
-    // }
+        try {
+            const newCartProd = {
+                carrito_id,
+                producto_id,
+                cantidad,
+                precio,
+                iva,
+                total,
+                fecha_agregado
+            }
+
+            const data = await Carrito_Producto.create(newCartProd);
+
+            if (data) {
+                this.rpta = new okResp
+                this.rpta.message = `Registro creado con éxito`;
+            }
+
+            return res.send(this.rpta)
+
+        } catch (error: any) {
+            console.log(error);
+            throw error;
+        }
+    }
 
     // // actualizar categoria
     // update = async (req: Request, res: Response) => {

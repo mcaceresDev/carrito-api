@@ -32,7 +32,7 @@ class Server {
         // Metodos iniciales
         this.dbConnection()
         this.middlewares() 
-        this.routes()
+        this.routes() 
     }
 
     routes(){

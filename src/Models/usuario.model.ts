@@ -38,11 +38,11 @@ const Usuario = db.define('usuario', {
         type: DataTypes.TINYINT,
         allowNull: false,
     },
-    rol_Id: {
+    rol_id: {
         type: DataTypes.TINYINT,
         allowNull: false,
     },
-    carrito_Id: DataTypes.TINYINT
+    carrito_id: DataTypes.TINYINT
 }, {
     // sequelize,
     modelName: 'Usuario',

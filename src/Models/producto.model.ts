@@ -2,6 +2,7 @@ import { DataTypes } from "sequelize";
 import db from "../config/db/connection";
 import Carrito_Producto from "./carrito-producto.model";
 import Categoria from "./categoria.model";
+import Usuario from "./usuario.model";
 
 const Producto = db.define('producto', {
     id_producto: {
@@ -10,40 +11,44 @@ const Producto = db.define('producto', {
         autoIncrement: true, // Automatically gets converted to SERIAL for postgres
         allowNull: false,
     },
-    nombre:{
+    nombre: {
         type: DataTypes.STRING
     },
-    descripcion:{
+    descripcion: {
         type: DataTypes.STRING
     },
-    marca:{
+    marca: {
         type: DataTypes.STRING
     },
-    modelo:{
+    modelo: {
         type: DataTypes.STRING
     },
-    precio:{
+    precio: {
         type: DataTypes.STRING
     },
-    stock:{
+    stock: {
         type: DataTypes.INTEGER
     },
-    estado:{
+    estado: {
         type: DataTypes.STRING
     },
-    categoria_id:{
+    categoria_id: {
+        type: DataTypes.TINYINT
+    },
+    usuario_id: {
         type: DataTypes.TINYINT
     }
-    
+
 }, {
     modelName: 'producto',
     freezeTableName: true,  // La tabla tendra el mismo nombre que el modelo
     timestamps: false,
 })
 
-// Producto.hasMany(Carrito_Producto,{
-//     as: 'Carrito_Producto',
-//     foreignKey: 'producto_id',
-//   });
+Producto.belongsTo(Usuario, {
+    as: 'UsuarioProducto',
+    foreignKey: 'usuario_id',
+});
+
 
 export default Producto
