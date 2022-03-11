@@ -15,8 +15,8 @@ export interface carrito_producto {
     total: number,
     fecha_agregado: Date
 }
-
-class CarritoController {
+// TODO
+class FacturaController {
 
     rpta: respuesta = {
         message: "Sin respuesta",
@@ -195,4 +195,4 @@ class CarritoController {
     // ---------------------------------------------------------
 }
 
-export default CarritoController
+export default FacturaController

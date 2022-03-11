@@ -1,12 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- mis estilos -->
+    <link rel="stylesheet" href="./index.css">
+    
+    <title>Carrito Api</title>
 </head>
+
 <body>
-    <h2>Bienvenido a mi api</h2>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Carrito Api</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="presentacion w-100 ">
+        <div class="container py-5 text-white">
+            <h1>Bienvenido a Carrito Api</h1>
+            <h4>
+                Una api de ejemplo para ventas que incluye carrito de compras. <br>
+                Desarrollada con las siguientes tecnologías:
+            </h4>
+            <ul>
+                <li>Node</li>
+                <li>Typescrip</li>
+                <li>Express</li>
+                <li>Sequelize</li>
+                <li>Dotenv</li>
+                <li>JsonWebToken</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container py-4">
+        <h2 class="">Acerca de</h2>
+        <hr class="w-50">
+        <p class="fs-5"><span class="fw-bold">Carrito api</span> fue desarrollada para ofrecer un
+            recurso sencillo a partir del cual puedes partir para desarrollar tu propia app completa 
+            de e-commerce</p>
+            <h4>Fue desarrollada con las siguientes tecnologias:</h4>
+            <ul>
+                <li>Node</li>
+                <li>Typescrip</li>
+            <li>Express</li>
+            <li>Sequelize</li>
+            <li>Dotenv</li>
+            <li>JsonWebToken</li>
+        </ul>
+        <h4>y cuenta con una base de datos MySql</h4>
+    </div>
+    
+    <div class="container py-3">
+        <h2>Recursos</h2>
+        <hr class="w-50">
+        <p class="fs-5"><span class="fw-bold">Carrito api</span> cuenta con 4 recursos comunes:</p>
+        <ul class="list-group">
+            <li class="list-group-item border-0"><a href="/api/productos/all">/Productos</a> </li>
+            <li class="list-group-item border-0"><a href="/api/categorias/all">/Categorias</a> </li>
+            <li class="list-group-item border-0"><a href="/api/usuarios/all">/Usuarios</a> </li>
+            <li class="list-group-item border-0"><a href="/api/factura/all">/Ventas</a> </li>
+        </ul>
+    </div>
+    
+    <div class="container py-3">
+        <h2>Rutas</h2>
+        <hr class="w-50">
+        <p class="fs-5"> Todos los métodos HTTP son soportados:</p>
+        <ul class="list-group">
+            <li class="list-group-item border-0">GET <a href="/api/productos/all"> /api/productos</a> </li>
+            <li class="list-group-item border-0">GET <a href="/api/categorias/all"> /api/categorias</a> </li>
+            <li class="list-group-item border-0">GET <a href="/api/usuarios/all"> /api/usuarios</a> </li>
+            <li class="list-group-item border-0">GET <a href="/api/factura/all"> /api/ventas</a> </li>
+        </ul>
+    </div>
+
+    <div class="container-fluid d-flex py-5">
+        <div class="card mb-3 mx-auto">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Manuel Cáceres M. <br> Desarrollador Web</h5>
+              <p class="card-text">Creador de carrito api.</p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+    </div>
+
+    <div class="container-fluid py-2 bg-dark text-white text-center">
+        <p>2022 - Todos los derechos reservados</p>
+    </div>
+
+
 </body>
+
 </html>
