@@ -24,7 +24,7 @@ class CarritoController {
         status: 0
     }
 
-    // Obtener todos los registros de un carrito segun el usuario
+    // Obtener todos los registros de un carrito 
     getAll = async (req: Request, res: Response) => {
         const { id } = req.params
 
@@ -93,10 +93,11 @@ class CarritoController {
             producto_id,
             cantidad,
             precio,
-            iva,
-            total,
-            fecha_agregado
         } = req.body
+
+        let iva   = (precio * 0.15) * cantidad 
+        let total = (cantidad*precio) + iva
+        let fecha_agregado = new Date()
 
         try {
             const newCartProd = {
@@ -124,61 +125,51 @@ class CarritoController {
         }
     }
 
-    // // actualizar categoria
-    // update = async (req: Request, res: Response) => {
+    // elimincion de producto
+    delProd = async (req: Request, res: Response) => {
 
-    //     try {
-    //         const id_categoria = req.params.id;
-    //         //datos a modificar
-    //         const { nombre, descripcion } = req.body
+        try {
+            const producto_id = req.params.id;
 
-    //         const newCategory = {
-    //             nombre,
-    //             descripcion
-    //         }
+            let data = await Carrito_Producto.destroy( {
+                where: { producto_id }
+            });
 
-    //         let data = await Categoria.update(newCategory, {
-    //             where: {
-    //                 id_categoria
-    //             }
-    //         });
+            if (data) {
+                this.rpta = new okResp
+                this.rpta.message = `Registro Eliminado`;
+            }
 
-    //         if (data[0] == 1) { // si es 1 se realizo el cambio
-    //             this.rpta = new okResp
-    //             this.rpta.message = `Datos Actualizados`;
-    //         }
+            return res.send(this.rpta);
 
-    //         return res.send(this.rpta);
+        } catch (error) {
+            console.log(error);
+            return res.json(this.rpta);
+        }
+    }
 
-    //     } catch (error) {
-    //         console.log(error);
-    //         throw error;
-    //     }
-    // }
+    // vaciar carrito
+    delCart = async (req: Request, res: Response) => {
 
-    // // elimincion logica
-    // delete = async (req: Request, res: Response) => {
+        try {
+            const carrito_id = req.params.id;
 
-    //     try {
-    //         const id_categoria = req.params.id;
-    //         let data = await Categoria.update({
-    //             estado: 0
-    //         }, {
-    //             where: { id_categoria }
-    //         });
+            let data = await Carrito_Producto.destroy( {
+                where: { carrito_id }
+            });
 
-    //         if (data) {
-    //             this.rpta = new okResp
-    //             this.rpta.message = `Registro Eliminado`;
-    //         }
+            if (data) {
+                this.rpta = new okResp
+                this.rpta.message = `Registro Eliminado`;
+            }
 
-    //         return res.send(this.rpta);
+            return res.send(this.rpta);
 
-    //     } catch (error) {
-    //         console.log(error);
-    //         return res.send(this.rpta);
-    //     }
-    // }
+        } catch (error) {
+            console.log(error);
+            return res.json(this.rpta);
+        }
+    }
 
     // // eliminacion fisica
     // drop = async (req: Request, res: Response) => {

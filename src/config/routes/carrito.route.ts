@@ -5,8 +5,9 @@ const router = Router()
 const carritoController = new CarritoController
 
 router.get('/all/:id', carritoController.getAll)
-// router.get('/byId', categoriaController.getById)
-// router.post('/', categoriaController.add)
+router.post('/fill', carritoController.fillCart)
+router.delete('/prod/:id', carritoController.delProd)
+router.delete('/prodcart/:id', carritoController.delCart)
 // router.put('/put/:id', categoriaController.update)
 // router.delete('/delete/:id', categoriaController.delete)
 
