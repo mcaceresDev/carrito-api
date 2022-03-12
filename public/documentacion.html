@@ -29,10 +29,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./">Home</a>
+                        <a class="nav-link" aria-current="page" href="./">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./documentacion.html">Documentación</a>
+                        <a class="nav-link active" href="./documentacion.html">Documentación</a>
                     </li>
 
                 </ul>
@@ -40,7 +40,7 @@
         </div>
     </nav>
 
-    <div class="presentacion bg-obscure w-100 d-flex">
+    <!-- <div class="presentacion bg-obscure w-100 d-flex">
         <div class="m-auto container py-5 text-light">
             <h1>Bienvenido a Carrito Api</h1>
             <p class="fs-5 mt-5">
@@ -50,40 +50,45 @@
                 tu gusto y necesidades.<br>
             </p>
         </div>
-    </div>
+    </div> -->
 
     <main class="cuerpo container mt-5 p-5 ">
-        <h2 class="">Acerca de</h2>
+        <h2 class="">Primeros pasos</h2>
         <hr class="">
-        <p class="fs-5"><span class="fw-bold">Carrito api</span> fue desarrollada para ofrecer un
-            recurso sencillo a partir del cual puedes partir para desarrollar tu propia app completa
-            de e-commerce</p>
-        <h4>Fue desarrollada con las siguientes tecnologias:</h4>
-        <ul>
-            <li>Node</li>
-            <li>Typescrip</li>
-            <li>Express</li>
-            <li>Sequelize</li>
-            <li>Dotenv</li>
-            <li>JsonWebToken</li>
+        <p class="fs-5">Estas instrucciones le proporcionarán una copia del proyecto en funcionamiento en su máquina local para fines de desarrollo y prueba. 
+            Consulte implementación para obtener notas sobre cómo implementar el proyecto en un sistema en vivo. Ve al repositorio del proyecto para clonarlo en tu computadora, 
+            seguido de esto ejecula los siguientes comandos desde la consola.</p>
+
+        <h4>Instalación</h4>
+        <!-- <p>Ve al repositorio del proyecto para clonarlo en tu computadora, seguido de esto ejecula los siguientes comandos</p> -->
+        <ul class="list-group">
+            <li class="list-group-item border-0 fw-bold">Instala todas las dependencias</li>
+            <li class="list-group-item border-0">npm install</li>
+            <li class="list-group-item border-0 fw-bold">Crea un archivo .env</li>
+            <li class="list-group-item border-0">touch .env </li>
+            <li class="list-group-item border-0 fw-bold">Agrega una <span class="text-primary">secret key</span> a tu archivo .env</li>
+            <li class="list-group-item border-0">SECRET = ??? </li>
         </ul>
-        <p class="fs-5">y cuenta con una base de datos MySql</p>
 
 
         <section class="mt-5">
-            <h2>Recursos</h2>
+            <h2>URL Base</h2>
             <hr class="">
-            <p class="fs-5"><span class="fw-bold">Carrito api</span> cuenta con 4 recursos comunes:</p>
-            <ul class="list-group">
-                <li class="list-group-item border-0"><a href="/api/productos/all">/Productos</a> </li>
-                <li class="list-group-item border-0"><a href="/api/categorias/all">/Categorias</a> </li>
-                <li class="list-group-item border-0"><a href="/api/usuarios/all">/Usuarios</a> </li>
-                <li class="list-group-item border-0"><a href="/api/factura/all">/Ventas</a> </li>
-            </ul>
+            <p class="fs-5"> La URL base es la URL raíz para toda la API, si alguna vez realiza una solicitud a carrito-api y obtiene un error, primero verifique la URL base. <br>
+            La url base para carrito-api es:</p>
+            <span>http://localhost:3050/api/</span>
+        </section>
+        
+        <section class="mt-5">
+            <h2>Autenticación</h2>
+            <hr class="">
+            <p class="fs-5"> La URL base es la URL raíz para toda la API, si alguna vez realiza una solicitud a carrito-api y obtiene un error, primero verifique la URL base. <br>
+            La url base para carrito-api es:</p>
+            <span>http://localhost:3050/api/</span>
         </section>
 
         <section class="mt-5">
-            <h2>Rutas</h2>
+            <h2>Endpoints</h2>
             <hr class="">
             <p class="fs-5"> Todos los métodos HTTP son soportados:</p>
             <ul class="list-group">
@@ -94,7 +99,7 @@
             </ul>
         </section>
 
-        <section class="container-fluid mt-5 d-flex py-5 border-dark border-top border-bottom text-center">
+        <!-- <section class="container-fluid mt-5 d-flex py-5 border-dark border-top border-bottom text-center">
             <div class="card mb-3 mx-auto w-50">
                 <div class="w-25 mx-auto">
                     <img src="./assets/img/user.png" class="card-img-top img-fluid" alt="...">
@@ -111,7 +116,7 @@
                     </p>
                 </div>
             </div>
-        </section>
+        </section> -->
     </main>
     <div class="mb-5 py-3 container bg-light-gray rounded-bottom">
         <p>Link del repositorio en github: <a href="https://github.com/mcaceresDev/carrito-api">https://github.com/mcaceresDev/carrito-api</a></p>
