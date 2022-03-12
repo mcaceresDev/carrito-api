@@ -1,0 +1,8 @@
+:root{
+    /* colores */
+    --black: #1c1e22;
+    --gray: linear-gradient(#484e55, #3a3f44 60%, #313539);
+    --light-gray: #dee2e6;
+    --gray-line: rgb(173, 172, 172);
+    /* --light-gray: rgb(230, 225, 225); */
+}

@@ -1,0 +1,24 @@
+/* colores */
+.bg-obscure{
+    background-color: var(--black)
+}
+.bg-gray{
+    background-image: var(--gray)
+}
+.bg-light-gray{
+    background-color: var(--light-gray);
+}
+.presentacion{
+    height: 50vh !important;
+}
+
+.cuerpo{
+    border: solid var(--gray-line) 1px !important;
+    border-bottom: 0 !important;
+    border-radius: 6px;
+}
+
+.repo{
+    border: solid var(--gray-line) 1px !important;
+    /* border-bottom: solid var(--gray-line) 1px !important; */
+}
