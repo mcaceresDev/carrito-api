@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { respuesta, serverError, notFoundError, forbiddenError, okResp } from '../Models/response.model'
+import { respuesta, serverError, notFoundError, forbiddenError, okResp, sequelizeError } from '../Models/response.model'
 // modelos
 import Categoria from '../Models/categoria.model'
 import Producto from '../Models/producto.model'
@@ -15,12 +15,7 @@ class CategoriaController {
     getAll = async (req: Request, res: Response) => {
 
         try {
-            const data = await Categoria.findAll({
-                include: {
-                    model: Producto,
-                    as: "Producto",
-                }
-            })
+            const data = await Categoria.findAll()
 
             if (data.length > 0) {
                 this.rpta = new okResp
@@ -32,10 +27,10 @@ class CategoriaController {
             return res.send(this.rpta);
             // return res.json(rpta);
 
-        } catch (error: any) {
-            this.rpta = new serverError()
-            console.log(error);
-            throw error
+        } catch (Err:sequelizeError | any) {
+            let response = new serverError()
+            response.error = Err
+            return res.send(response);
         }
     }
 
@@ -60,10 +55,10 @@ class CategoriaController {
             }
             return res.send(this.rpta);
 
-        } catch (error: any) {
-            this.rpta = new serverError()
-            console.log(error);
-            throw error
+        } catch (Err:sequelizeError | any) {
+            let response = new serverError()
+            response.error = Err
+            return res.send(response);
         }
     }
 
@@ -84,9 +79,10 @@ class CategoriaController {
 
             return res.send(this.rpta)
 
-        } catch (error: any) {
-            console.log(error);
-            throw error;
+        } catch (Err:sequelizeError | any) {
+            let response = new serverError()
+            response.error = Err
+            return res.send(response);
         }
     }
 
@@ -116,9 +112,10 @@ class CategoriaController {
 
             return res.send(this.rpta);
 
-        } catch (error) {
-            console.log(error);
-            throw error;
+        } catch (Err:sequelizeError | any) {
+            let response = new serverError()
+            response.error = Err
+            return res.send(response);
         }
     }
 
@@ -140,9 +137,10 @@ class CategoriaController {
 
             return res.send(this.rpta);
 
-        } catch (error) {
-            console.log(error);
-            return res.send(this.rpta);
+        } catch (Err:sequelizeError | any) {
+            let response = new serverError()
+            response.error = Err
+            return res.send(response);
         }
     }
 
@@ -162,9 +160,10 @@ class CategoriaController {
 
             return res.send(this.rpta);
         }
-        catch (error) {
-            console.log(error);
-            throw error;
+        catch (Err:sequelizeError | any) {
+            let response = new serverError()
+            response.error = Err
+            return res.send(response);
         }
     }
 

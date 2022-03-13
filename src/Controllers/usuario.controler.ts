@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express'
 import Usuario from '../Models/usuario.model'
-import { respuesta, serverError, notFoundError, forbiddenError, okResp } from '../Models/response.model'
+import { respuesta, serverError, notFoundError, forbiddenError, okResp, sequelizeError } from '../Models/response.model'
 import Carrito from '../Models/carrito.model'
 
 class UsuarioController {
@@ -29,9 +29,10 @@ class UsuarioController {
             return res.send(this.rpta);
             // return res.json(rpta);
             
-        } catch (error) {
-            console.log(error);
-            throw error
+        } catch (Err:sequelizeError | any) {
+            let response = new serverError()
+            response.error = Err
+            return res.send(response);
         }
     }
 
@@ -56,10 +57,10 @@ class UsuarioController {
             }
             return res.send(this.rpta);
 
-        } catch (error: any) {
-            this.rpta = new serverError()
-            console.log(error);
-            throw error
+        } catch (Err:sequelizeError | any) {
+            let response = new serverError()
+            response.error = Err
+            return res.send(response);
         }
     }
 
@@ -93,9 +94,10 @@ class UsuarioController {
 
             return res.send(this.rpta)
 
-        } catch (error: any) {
-            console.log(error);
-            throw error;
+        } catch (Err:sequelizeError | any) {
+            let response = new serverError()
+            response.error = Err
+            return res.send(response);
         }
     }
 
@@ -132,9 +134,10 @@ class UsuarioController {
 
             return res.send(this.rpta);
 
-        } catch (error) {
-            console.log(error);
-            throw error;
+        } catch (Err:sequelizeError | any) {
+            let response = new serverError()
+            response.error = Err
+            return res.send(response);
         }
     }
 
@@ -159,9 +162,10 @@ class UsuarioController {
             }
             return res.send(this.rpta);
 
-        } catch (error) {
-            console.log(error);
-            throw error
+        } catch (Err:sequelizeError | any) {
+            let response = new serverError()
+            response.error = Err
+            return res.send(response);
         }
     }
 
@@ -183,9 +187,10 @@ class UsuarioController {
 
             return res.send(this.rpta);
 
-        } catch (error) {
-            console.log(error);
-            return res.send(this.rpta);
+        } catch (Err:sequelizeError | any) {
+            let response = new serverError()
+            response.error = Err
+            return res.send(response);
         }
     }
 
@@ -205,9 +210,10 @@ class UsuarioController {
 
             return res.send(this.rpta);
         }
-        catch (error) {
-            console.log(error);
-            throw error;
+        catch (Err:sequelizeError | any) {
+            let response = new serverError()
+            response.error = Err
+            return res.send(response);
         }
     }
 

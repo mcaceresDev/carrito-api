@@ -5,7 +5,7 @@ const router = Router()
 const categoriaController = new CategoriaController
 
 router.get('/all', categoriaController.getAll)
-router.get('/byId', categoriaController.getById)
+router.get('/byId/:id', categoriaController.getById)
 router.post('/', categoriaController.add)
 router.put('/put/:id', categoriaController.update)
 router.put('/delete/:id', categoriaController.delete)

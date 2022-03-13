@@ -1,6 +1,7 @@
 import { Request, Response } from 'express'
+import Categoria from '../Models/categoria.model'
 import Producto from '../Models/producto.model'
-import { respuesta, serverError, notFoundError, okResp } from '../Models/response.model'
+import { respuesta, serverError, notFoundError, okResp, sequelizeError } from '../Models/response.model'
 
 class ProductoController {
 
@@ -25,10 +26,10 @@ class ProductoController {
             return res.send(this.rpta);
             // return res.json(rpta);
 
-        } catch (error: any) {
-            this.rpta = new serverError()
-            console.log(error);
-            throw error
+        } catch (Err:sequelizeError | any) {
+            let response = new serverError()
+            response.error = Err
+            return res.send(response);
         }
     }
 
@@ -53,10 +54,42 @@ class ProductoController {
             }
             return res.send(this.rpta);
 
-        } catch (error: any) {
-            this.rpta = new serverError()
-            console.log(error);
-            throw error
+        } catch (Err:sequelizeError | any) {
+            let response = new serverError()
+            response.error = Err
+            return res.send(response);
+        }
+    }
+
+    // Obtener todos los registros segun categoria
+    getByCategory = async (req: Request, res: Response) => {
+        const { id } = req.params
+
+        try {
+            const data = await Categoria.findAll({
+                include: {
+                    model: Producto,
+                    as: "Producto",
+                },
+                where: {
+                    id_categoria: id
+                }
+            })
+
+            if (data.length > 0) {
+                this.rpta = new okResp
+                this.rpta.message = `Mostrando ${data.length} registros`;
+                this.rpta.rows = data;
+            } else {
+                this.rpta = new notFoundError()
+            }
+            return res.send(this.rpta);
+            // return res.json(rpta);
+
+        } catch (Err:sequelizeError | any) {
+            let response = new serverError()
+            response.error = Err
+            return res.send(response);
         }
     }
 
@@ -88,9 +121,10 @@ class ProductoController {
 
             return res.send(this.rpta)
 
-        } catch (error: any) {
-            console.log(error);
-            throw error;
+        } catch (Err:sequelizeError | any) {
+            let response = new serverError()
+            response.error = Err
+            return res.send(response);
         }
     }
 
@@ -130,9 +164,10 @@ class ProductoController {
 
             return res.send(this.rpta);
 
-        } catch (error) {
-            console.log(error);
-            throw error;
+        } catch (Err:sequelizeError | any) {
+            let response = new serverError()
+            response.error = Err
+            return res.send(response);
         }
     }
 
@@ -154,9 +189,10 @@ class ProductoController {
 
             return res.send(this.rpta);
 
-        } catch (error) {
-            console.log(error);
-            return res.send(this.rpta);
+        } catch (Err:sequelizeError | any) {
+            let response = new serverError()
+            response.error = Err
+            return res.send(response);
         }
     }
 
@@ -176,9 +212,10 @@ class ProductoController {
 
             return res.send(this.rpta);
         }
-        catch (error) {
-            console.log(error);
-            throw error;
+        catch (Err:sequelizeError | any) {
+            let response = new serverError()
+            response.error = Err
+            return res.send(response);
         }
     }
 
