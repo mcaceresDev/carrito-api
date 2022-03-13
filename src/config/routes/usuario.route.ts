@@ -9,6 +9,7 @@ router.get('/byId/:id', usuarioControler.getById)
 router.post('/', usuarioControler.add)
 router.put('/put/:id', usuarioControler.update)
 router.put('/delete/:id', usuarioControler.delete)
+// router.put('/drop/:id', usuarioControler.drop)
 
 
 
