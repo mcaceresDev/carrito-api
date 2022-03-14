@@ -11,6 +11,7 @@ import userRoutes from '../config/routes/usuario.route'
 import productRoutes from '../config/routes/producto.route'
 import categoryRoutes from '../config/routes/categoria.route'
 import cartRoutes from '../config/routes/carrito.route'
+import authRoutes from '../config/routes/auth.route'
 
 dotenv.config()
 class Server {
@@ -21,7 +22,8 @@ class Server {
         usuarios: '/api/usuarios',
         categorias: '/api/categorias',
         productos: '/api/productos',
-        carrito: '/api/carrito'
+        carrito: '/api/carrito',
+        auth: '/api/auth'
     }
 
     
@@ -36,11 +38,12 @@ class Server {
     }
 
     routes(){
-        const { usuarios, productos, categorias, carrito } = this.apiPaths
+        const { usuarios, productos, categorias, carrito, auth } = this.apiPaths
         this.app.use(usuarios, userRoutes)
         this.app.use(productos, productRoutes)
         this.app.use(categorias, categoryRoutes)
         this.app.use(carrito, cartRoutes)
+        this.app.use(auth, authRoutes)
     }
 
     middlewares(){
